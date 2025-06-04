@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bubbles love ❤️</title>
+        <title>Bly</title>
         <link rel="stylesheet" href="style.css">
         <style>
             body {
@@ -194,8 +194,12 @@
         </style>
     </head>
     <body>
-        <div class="message">I Love You ❤️</div>
+        <div class="message">
+          <div style="font-size: 30px; margin-bottom: 10px;">⏳ Tiempo juntos</div>
+          <div id="time-counter" style="font-size: 26px;"></div>
+        </div>
         <div id="bubbles-text"></div>
+
         <script src="script.js"></script>
         <script>
             // Lista de mensajes románticos que aparecerán en burbujas
@@ -271,7 +275,30 @@ function createTextBubble() {
 
 // Llamamos a la función createTextBubble cada 500 milisegundos (0.5 segundos)
 setInterval(createTextBubble, 500);
+// Fecha de inicio de la relación
+const startDate = new Date("2024-12-16T16:45:00");
 
+// Función para actualizar el contador
+function updateCounter() {
+  const now = new Date();
+  const diff = now - startDate;
+
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  const displaySeconds = seconds % 60;
+  const displayMinutes = minutes % 60;
+  const displayHours = hours % 24;
+
+  const formatted = `${days} días, ${displayHours}h ${displayMinutes}m ${displaySeconds}s`;
+  document.getElementById("time-counter").textContent = formatted;
+}
+
+// Actualiza el contador cada segundo
+setInterval(updateCounter, 1000);
+updateCounter(); // Llama de inmediato al cargar
         </script>
     </body>
 
